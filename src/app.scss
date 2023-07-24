@@ -1,0 +1,64 @@
+/*bg 242424
+color 255 255 255 0.87
+*/
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--bg: #242424;
+	--color: rgba(255, 255, 255, 0.87);
+	--light-bg: #292929;
+	background-color: var(--bg);
+	color: var(--color);
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1rem;
+
+	h1 {
+		font-size: 3rem;
+		margin: 0 1rem;
+	}
+
+	nav {
+		ul {
+			list-style: none;
+			margin-right: 1rem;
+
+			li {
+				display: inline-block;
+				margin: 0 1rem;
+
+				a {
+					text-decoration: none;
+					color: var(--color);
+
+					&:hover {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+}
+
+div.chat-div {
+	display: flex;
+	justify-content: center;
+	height: calc(100vh - 10rem);
+
+	div {
+		background-color: var(--light-bg);
+		width: 90%;
+		height: 100%;
+		border-radius: 8px;
+		border: 1px solid #fff;
+	}
+}
