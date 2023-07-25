@@ -62,3 +62,40 @@ div.chat-div {
 		border: 1px solid #fff;
 	}
 }
+
+.writing-div {
+	/*background-color: aqua;*/
+	/*border-radius: 10px;*/
+	margin: 0 auto;
+	margin-bottom: 10px;
+	border-radius: 8px;
+	max-height: 5%;
+	display: flex;
+	justify-content: center;
+
+	input {
+		border: 0;
+		border-bottom-left-radius: 8px;
+		border-top-left-radius: 8px;
+		border-bottom-right-radius: 0;
+		border-top-right-radius: 0;
+		flex-grow: 0.95;
+		background-color: #3a3a3a;
+		color: var(--color);
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	button {
+		border: 0;
+		border-bottom-right-radius: 8px;
+		border-top-right-radius: 8px;
+		border-bottom-left-radius: 0;
+		border-top-left-radius: 0;
+		flex-grow: 0.05;
+		background-color: #3a3a3a;
+		color: var(--color);
+	}
+}
