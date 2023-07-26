@@ -5,7 +5,7 @@
 
     <nav>
         <ul>
-            <li><a href="#">About</a></li>
+            <li><a href="https://github.com/beef-e/peerJSChat">About</a></li>
             <li><a href="#">My ID</a></li>
         </ul>
     </nav>
