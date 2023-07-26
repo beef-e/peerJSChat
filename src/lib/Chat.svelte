@@ -1,13 +1,14 @@
 <script lang="ts">
     import WritingBar from "./WritingBar.svelte";
     import MessageComponent from "./MessageComponent.svelte";
+    import MessageComponentLeft from "./MessageComponentLeft.svelte";
 </script>
 
 <div class="chat-div">
 <div class="effective-chat">
     <!--Component dei messaggi-->
     <MessageComponent></MessageComponent>
-    <MessageComponent></MessageComponent>
+    <MessageComponentLeft></MessageComponentLeft>
     <MessageComponent></MessageComponent>
 
     <WritingBar></WritingBar>

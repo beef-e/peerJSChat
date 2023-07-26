@@ -99,3 +99,59 @@ div.chat-div {
 		color: var(--color);
 	}
 }
+
+div#message-div {
+	width: 100%;
+	border: 0;
+	height: auto;
+	display: flex;
+	justify-content: end;
+	margin-bottom: 2%;
+
+	div {
+		display: flex;
+		justify-content: center;
+		margin-right: 5%;
+		min-width: 10%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		max-width: 50%;
+		align-items: center;
+
+		span {
+			padding-left: 1.5%;
+			padding-top: 1%;
+			padding-bottom: 1%;
+			padding-right: 1%;
+		}
+	}
+}
+
+div#message-div-left {
+	width: 100%;
+	border: 0;
+	height: auto;
+	display: flex;
+	justify-content: start;
+	margin-bottom: 2%;
+
+	div {
+		display: flex;
+		justify-content: center;
+		margin-left: 5%;
+		min-width: 10%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		max-width: 50%;
+		align-items: center;
+
+		span {
+			padding-left: 1.5%;
+			padding-top: 1%;
+			padding-bottom: 1%;
+			padding-right: 1%;
+		}
+	}
+}
