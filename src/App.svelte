@@ -4,12 +4,18 @@
   import Counter from './lib/Counter.svelte'
   import Header from './lib/Header.svelte'
   import Chat from './lib/Chat.svelte'
+  import MessageComponent from './lib/MessageComponent.svelte'
+  import MessageComponentLeft from './lib/MessageComponentLeft.svelte'
 </script>
 
 <main>
   <Header></Header>
 
-  <Chat></Chat>
+  <Chat>
+    <MessageComponent></MessageComponent>
+    <MessageComponentLeft></MessageComponentLeft>
+    <MessageComponent></MessageComponent>
+  </Chat>
 </main>
 
 <style>

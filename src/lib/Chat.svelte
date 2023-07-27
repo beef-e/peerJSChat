@@ -7,9 +7,11 @@
 <div class="chat-div">
 <div class="effective-chat">
     <!--Component dei messaggi-->
-    <MessageComponent></MessageComponent>
+    <!--<MessageComponent></MessageComponent>
     <MessageComponentLeft></MessageComponentLeft>
-    <MessageComponent></MessageComponent>
+    <MessageComponent></MessageComponent>-->
+
+    <slot></slot>
 
     <WritingBar></WritingBar>
     <!--Component della barra di scrittura-->
@@ -17,11 +19,11 @@
 </div>
 
 <style lang="scss">
-    .chat-div{
-        div{
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
+.chat-div{
+    div{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
+}
 </style>
