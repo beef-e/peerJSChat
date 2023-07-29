@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
     import WritingBar from "./WritingBar.svelte";
     import MessageComponent from "./MessageComponent.svelte";
     import MessageComponentLeft from "./MessageComponentLeft.svelte";
@@ -13,7 +13,7 @@
 
     <slot></slot>
 
-    <WritingBar></WritingBar>
+    <!--<WritingBar funzione={theFunction}></WritingBar>-->
     <!--Component della barra di scrittura-->
 </div>
 </div>
