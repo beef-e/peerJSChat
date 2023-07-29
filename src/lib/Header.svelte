@@ -1,42 +1,31 @@
 <script>
 import { onMount } from "svelte";
-//import {peerID} from "../.."
-//import {otherID} from "../.."
-import { writable } from "svelte/store";
-//let myPeerID: string;
-//let isPeerIDSet = false;
-//let peerIDString;
-//let otherIDString=writable("");
-/*otherIDString.subscribe(value => {
-    // @ts-ignore
-    otherIDString=value;
-});
-
-/*onMount(async () => {
-    peerID.then(()=>{
-        peerIDString=peerID.toString();
-        isPeerIDSet = true;
-    })
-});*/
-
-/*function trasferisciOtherID() {
-    console.log("trasferisco " + otherIDString);
-    // @ts-ignore
-    otherID.set(otherIDString);
-}*/
-
 import {peer} from "../..";
+import { message } from "../../index"
+import { toSend } from "../../index"
 let otherID;
 let fastID;
+let conn = null;
 
 function connectPeer(){
-    try {
-        peer.connect(otherID);
-        console.log("Connected to " + otherID);
-    } catch (error) {
-        console.log("The following error occurred: " +error);
-    }
-}
+    conn=peer.connect(otherID);
+    console.log("Connected to " + otherID);
+
+    // Handling di input e output dati
+    conn.on("open", ()=>{
+        //invio un messaggio al mio interlocutore
+        if ($toSend) {
+            conn.send("Hello from " + peer.id);
+            console.log("Sent message: " +$message);
+        }
+
+        // Ricezione di un messaggio dal mio interlocutore
+        conn.on("data", (data)=>{
+            //creare un nuovo messaggio del mio interlocutore
+            console.log("Received data: " + data);
+        });
+    });
+};
 
 onMount(async () => {
     await setTimeout(() => {}, 2000);
@@ -47,7 +36,6 @@ function handleClick() {
     alert("Copied to clipboard!");
     fastID = peer.id;
 }
-
 </script>
 
 <header>
