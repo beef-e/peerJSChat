@@ -27,6 +27,7 @@ import { writable } from "svelte/store";
 
 import {peer} from "../..";
 let otherID;
+let fastID;
 
 function connectPeer(){
     try {
@@ -37,6 +38,15 @@ function connectPeer(){
     }
 }
 
+onMount(async () => {
+    await setTimeout(() => {}, 2000);
+});
+
+function handleClick() {
+    navigator.clipboard.writeText(peer.id);
+    alert("Copied to clipboard!");
+    fastID = peer.id;
+}
 
 </script>
 
@@ -46,9 +56,13 @@ function connectPeer(){
     <nav>
         <ul>
             <li><a href="https://github.com/beef-e/peerJSChat">About</a></li>
-            {#if true}
-            <li><a href="#">My ID: {peer.id}</a></li>
-            {/if}
+            {#await peer.id||fastID then }
+                {#if peer.id || fastID}
+                    <li><span on:click={handleClick}>My ID: {peer.id || fastID}</span></li>
+                    {:else}
+                    <li><span on:click={handleClick}>My ID: Loading...</span></li>
+                {/if}
+            {/await}
             <li><input type="text" name="otherID" id="otherID" placeholder="Insert another ID" bind:value={otherID}><button on:click={connectPeer}>Connect</button></li>
         </ul>
     </nav>

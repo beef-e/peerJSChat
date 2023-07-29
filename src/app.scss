@@ -36,7 +36,8 @@ header {
 				display: inline-block;
 				margin: 0 1rem;
 
-				a {
+				a,
+				span {
 					text-decoration: none;
 					color: var(--color);
 
