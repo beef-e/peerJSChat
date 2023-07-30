@@ -1,7 +1,6 @@
 import { Peer } from 'peerjs';
 import { writable } from 'svelte/store';
-export const message = writable('');
-export const toSend = writable(false);
+import { otherID } from './src/utils/utils';
 
 const peer = new Peer();
 
@@ -17,5 +16,18 @@ peer.on('connection', (conn) => {
 		console.log('Received', data);
 	});
 });
+
+export function connectFunction() {
+	const conn = peer.connect(otherID);
+
+	conn.on('open', () => {
+		console.log('Connected');
+
+		// Receive messages
+		conn.on('data', (data) => {
+			console.log('Received', data);
+		});
+	});
+}
 
 export { peer };

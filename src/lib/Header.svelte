@@ -1,14 +1,15 @@
 <script>
 import { onMount } from "svelte";
 import {peer} from "../..";
-import { message } from "../../index"
-import { toSend } from "../../index"
+import { message } from "../utils/utils"
+import { toSend } from "../utils/utils"
+import { destID } from "../utils/utils";
+import {connectFunction} from "../..";
 let otherID;
 let fastID;
-let conn = null;
 
 function connectPeer(){
-    conn=peer.connect(otherID);
+    /*conn=peer.connect(otherID);
     console.log("Connected to " + otherID);
 
     // Handling di input e output dati
@@ -24,11 +25,14 @@ function connectPeer(){
             //creare un nuovo messaggio del mio interlocutore
             console.log("Received data: " + data);
         });
-    });
+    });*/
+
+    destID.set(otherID);
+    connectFunction();
 };
 
 onMount(async () => {
-    await setTimeout(() => {}, 2000);
+    await setTimeout(() => {}, 1500);
 });
 
 function handleClick() {

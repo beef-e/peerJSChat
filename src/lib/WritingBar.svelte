@@ -1,7 +1,7 @@
 <script>
 import { peer } from "../..";
-import { message } from "../../index"
-import { toSend } from "../../index"
+import { message } from "../utils/utils"
+import { toSend } from "../utils/utils"
 export let conn 
 export let messaggio;
 
