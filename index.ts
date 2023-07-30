@@ -1,6 +1,7 @@
 import { Peer } from 'peerjs';
 import { writable } from 'svelte/store';
 import { testo } from './src/utils/utils';
+import { validate } from './src/utils/utils';
 //import { otherID } from './src/utils/utils';
 
 const peer = new Peer();
@@ -54,7 +55,7 @@ export function connectFunction(destID) {
 		});
 
 		// Send messages
-		if (testo.validate()) {
+		if (validate(testo)) {
 			console.log('Sending ', testo);
 			conn.send(testo);
 		}
