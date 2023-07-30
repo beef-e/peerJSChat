@@ -28,7 +28,8 @@ function connectPeer(){
     });*/
 
     destID.set(otherID);
-    connectFunction();
+    console.log("Connected to " + $destID);
+    connectFunction($destID);
 };
 
 onMount(async () => {
