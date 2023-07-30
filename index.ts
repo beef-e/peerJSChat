@@ -22,6 +22,21 @@ peer.on('connection', (conn) => {
 	//? anche io mi connetto al remote peer
 	const otherID = conn.peer;
 	console.log("sono nella peer.on('connection') e l'otherID è: " + otherID);
+
+	conn.on('open', () => {
+		console.log('Connected passively');
+
+		// Receive messages
+		conn.on('data', (data) => {
+			console.log('Received ', data);
+		});
+
+		// Send messages
+		if (validate(testo)) {
+			console.log('Sending ', testo);
+			conn.send(testo);
+		}
+	});
 	//connectFunction(otherID);
 
 	/*const idInterlocutore = conn.peer;
