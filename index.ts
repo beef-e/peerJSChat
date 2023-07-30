@@ -20,6 +20,7 @@ peer.on('connection', (conn) => {
 
 	//? anche io mi connetto al remote peer
 	const otherID = conn.peer;
+	console.log("sono nella peer.on('connection') e l'otherID è: " + otherID);
 	connectFunction(otherID);
 
 	/*const idInterlocutore = conn.peer;
