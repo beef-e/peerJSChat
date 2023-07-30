@@ -36,6 +36,10 @@ peer.on('connection', (conn) => {
 	});*/
 });
 
+peer.on('error', (err) => {
+	alert(err);
+});
+
 export function connectFunction(destID) {
 	// mi connetto al remote peer
 	console.log('funzione connessione...');
