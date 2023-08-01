@@ -3,8 +3,8 @@ import { onMount } from "svelte";
 import {peer} from "../..";
 import { message } from "../utils/utils"
 import { toSend } from "../utils/utils"
-import { destID } from "../utils/utils";
-import {connectFunction} from "../..";
+import { destID, MyID } from "../utils/utils";
+//import {connectFunction} from "../..";
 let otherID;
 let fastID;
 
@@ -29,11 +29,12 @@ function connectPeer(){
 
     destID.set(otherID);
     console.log("Connected to " + $destID);
-    connectFunction($destID);
+    //connectFunction($destID);
 };
 
 onMount(async () => {
     await setTimeout(() => {}, 1500);
+    //$MyID = prompt("Insert your ID")+(Math.random()*100).toString();
 });
 
 function handleClick() {
