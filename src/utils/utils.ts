@@ -9,7 +9,7 @@ export const MyID = writable('');
 export var conn;
 export let otherID;
 export let ID;
-export let testo;
+export let testo: string;
 
 export const peer = new Peer();
 
@@ -28,7 +28,19 @@ MyID.subscribe((value) => {
 
 message.subscribe((value) => {
 	testo = value;
-	conn.send(testo);
+
+	if (testo.length > 0) {
+		conn.send(testo);
+		console.log('Sent: ', testo);
+	}
+});
+
+conn.on('open', () => {
+	console.log('Connected');
+});
+
+conn.on('data', (data) => {
+	console.log('Received: ', data);
 });
 
 // funzione per eliminare gli spazi e identificare i messaggi vuoti

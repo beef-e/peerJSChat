@@ -15,14 +15,14 @@ peer.on('open', (id) => {
 	console.log('My peer ID is: ' + id);
 });
 
-conn.on('open', () => {
+/*conn.on('open', () => {
 	console.log('Connected');
-});
+});*/
 
 // Receive messages
-conn.on('data', (data) => {
+/*conn.on('data', (data) => {
 	console.log('Received', data);
-});
+});*/
 
 //? un remote peer si connette a me
 /*peer.on('connection', (conn) => {
