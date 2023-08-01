@@ -20,5 +20,7 @@ export function validate(text: string) {
 	text = text.replaceAll(' ', '');
 	if (text == '') {
 		return false;
+	} else {
+		return true;
 	}
 }

@@ -7,6 +7,7 @@ import { validate } from './src/utils/utils';
 const peer = new Peer();
 
 let peerID;
+let bothConnected = false;
 
 peer.on('open', (id) => {
 	peerID = id;
@@ -32,12 +33,15 @@ peer.on('connection', (conn) => {
 		});
 
 		// Send messages
-		if (validate(testo)) {
+		if (/*validate(testo)*/ testo != '') {
 			console.log('Sending ', testo);
 			conn.send(testo);
 		}
 	});
-	//connectFunction(otherID);
+
+	/*if (!bothConnected) {
+		connectFunction(otherID, bothConnected);
+	}*/
 
 	/*const idInterlocutore = conn.peer;
 	const RimandoConn = peer.connect(idInterlocutore);
@@ -56,10 +60,11 @@ peer.on('error', (err) => {
 	alert(err);
 });
 
-export function connectFunction(destID) {
+export function connectFunction(destID, bothConnected) {
 	// mi connetto al remote peer
 	console.log('funzione connessione...');
-	const conn = peer.connect(destID);
+	const conn = peer.connect(destID, { label: 'rimando' });
+	bothConnected = true;
 
 	conn.on('open', () => {
 		console.log('Connected');
@@ -70,7 +75,7 @@ export function connectFunction(destID) {
 		});
 
 		// Send messages
-		if (validate(testo)) {
+		if (/*validate(testo)*/ testo != '') {
 			console.log('Sending ', testo);
 			conn.send(testo);
 		}
