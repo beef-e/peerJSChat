@@ -16,15 +16,39 @@ export const peer = new Peer();
 peer.on('connection', (connection) => {
 	console.log('I am in peer.on(connection)');
 	conn = connection;
-	console.log(connection);
-	console.log(conn);
+	//console.log(connection);
+	//console.log(conn);
 	console.log('Connected passively to: ' + conn.peer);
 	console.log('conn.open è: ' + conn.open);
+
+	conn.on('open', () => {
+		console.log('Connected');
+
+		if (conn.open) {
+			console.log('conn.open è true');
+		}
+
+		conn.on('data', (data) => {
+			console.log('Received: ', data);
+		});
+	});
 });
 
 destID.subscribe((value) => {
 	otherID = value;
 	conn = peer.connect(otherID);
+
+	conn.on('open', () => {
+		console.log('Connected');
+
+		if (conn.open) {
+			console.log('conn.open è true');
+		}
+
+		conn.on('data', (data) => {
+			console.log('Received: ', data);
+		});
+	});
 });
 
 MyID.subscribe((value) => {
@@ -50,10 +74,10 @@ conn.on('open', () => {
 	if (conn.open) {
 		console.log('conn.open è true');
 	}
-});
 
-conn.on('data', (data) => {
-	console.log('Received: ', data);
+	conn.on('data', (data) => {
+		console.log('Received: ', data);
+	});
 });
 
 // funzione per eliminare gli spazi e identificare i messaggi vuoti
