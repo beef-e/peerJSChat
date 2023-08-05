@@ -8,17 +8,19 @@
   import MessageComponent from './lib/MessageComponent.svelte'
   import MessageComponentLeft from './lib/MessageComponentLeft.svelte'
   import WritingBar from './lib/WritingBar.svelte'
+
+  function createNewComponent() {
+    const element = new MessageComponent({
+      target: document.querySelector('#effective-chat'),
+    })
+  }
 </script>
 
 <main>
   <Header></Header>
 
   <Chat>
-    <MessageComponent></MessageComponent>
-    <MessageComponentLeft></MessageComponentLeft>
-    <MessageComponent></MessageComponent>
 
-    <WritingBar></WritingBar>
   </Chat>
 </main>
 

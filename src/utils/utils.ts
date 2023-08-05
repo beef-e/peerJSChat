@@ -5,6 +5,7 @@ export const message = writable('');
 export const toSend = writable(false);
 export const destID = writable('');
 export const MyID = writable('');
+export const messageIsMine = writable(0); // 0 = non inviato, 1 = inviato, 2 = ricevuto
 
 export var conn;
 export let otherID;
@@ -30,6 +31,7 @@ peer.on('connection', (connection) => {
 
 		conn.on('data', (data) => {
 			console.log('Received: ', data);
+			messageIsMine.set(2);
 		});
 	});
 });
@@ -47,6 +49,7 @@ destID.subscribe((value) => {
 
 		conn.on('data', (data) => {
 			console.log('Received: ', data);
+			messageIsMine.set(2);
 		});
 	});
 });
@@ -61,6 +64,7 @@ message.subscribe((value) => {
 	if (testo.length > 0 && conn != null) {
 		try {
 			conn.send(testo);
+			messageIsMine.set(1);
 		} catch (error) {
 			console.log('Errore: ' + error);
 		}
