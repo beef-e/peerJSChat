@@ -31,6 +31,7 @@ peer.on('connection', (connection) => {
 
 		conn.on('data', (data) => {
 			console.log('Received: ', data);
+			message.set(data);
 			messageIsMine.set(2);
 		});
 	});
@@ -49,6 +50,7 @@ destID.subscribe((value) => {
 
 		conn.on('data', (data) => {
 			console.log('Received: ', data);
+			message.set(data);
 			messageIsMine.set(2);
 		});
 	});
@@ -63,8 +65,8 @@ message.subscribe((value) => {
 
 	if (testo.length > 0 && conn != null) {
 		try {
-			conn.send(testo);
 			messageIsMine.set(1);
+			conn.send(testo);
 		} catch (error) {
 			console.log('Errore: ' + error);
 		}

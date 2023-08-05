@@ -1,9 +1,9 @@
 <script lang="ts">
-    let text= "";
+    export let text;
     </script>
     
     <div id="message-div-left">
         <div>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur ad porro architecto officiis excepturi itaque quod, commodi magnam aperiam error. Repellendus praesentium atque veritatis quas perferendis aut recusandae ducimus libero!</span>
+            <span>{text}</span>
         </div>
     </div>

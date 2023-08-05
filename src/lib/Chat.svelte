@@ -6,20 +6,27 @@
     import MessageComponentLeft from "./MessageComponentLeft.svelte";
 
     import {messageIsMine} from "../utils/utils";
+    import {message} from "../utils/utils";
 
-    function createNewComponent() {
-        if($messageIsMine===1){
+    $: if($messageIsMine===1){
             const element = new MessageComponent({
                 target: document.querySelector('.effective-chat'),
-                anchor: document.querySelector('.writing-div')
+                anchor: document.querySelector('.writing-div'),
+                props: {
+                    text: $message
+                }
             })
+            messageIsMine.set(0);
         }else if($messageIsMine===2){
             const element = new MessageComponentLeft({
                 target: document.querySelector('.effective-chat'),
-                anchor: document.querySelector('.writing-div')
+                anchor: document.querySelector('.writing-div'),
+                props: {
+                    text: $message
+                }
             })
+            messageIsMine.set(0);
         }
-    }
 </script>
 
 <div class="chat-div">
