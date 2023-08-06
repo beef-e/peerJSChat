@@ -14,10 +14,10 @@ function sendMessage(){
 </script>
 
 
-<div class="writing-div">
+<form class="writing-div" on:submit|preventDefault={sendMessage}>
     <input type="text" placeholder="Scrivi un messaggio" bind:value={messaggio}/>
-    <button on:click={sendMessage}>Invia</button>
-</div>
+    <button type="submit">Invia</button>
+</form>
 
 <style>
     input{
