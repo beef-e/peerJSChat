@@ -11,6 +11,7 @@ export var conn;
 export let otherID;
 export let ID;
 export let testo: string;
+let messageIsMineValue: number;
 
 export const peer = new Peer();
 
@@ -30,9 +31,9 @@ peer.on('connection', (connection) => {
 		}
 
 		conn.on('data', (data) => {
-			console.log('Received: ', data);
-			message.set(data);
+			console.log('Received dal connected passively: ', data);
 			messageIsMine.set(2);
+			message.set(data);
 		});
 	});
 });
@@ -49,9 +50,9 @@ destID.subscribe((value) => {
 		}
 
 		conn.on('data', (data) => {
-			console.log('Received: ', data);
-			message.set(data);
+			console.log('Received dal destID.subscribe: ', data);
 			messageIsMine.set(2);
+			message.set(data);
 		});
 	});
 });
@@ -63,7 +64,7 @@ MyID.subscribe((value) => {
 message.subscribe((value) => {
 	testo = value;
 
-	if (testo.length > 0 && conn != null) {
+	if (testo.length > 0 && conn != null && messageIsMineValue != 2) {
 		try {
 			messageIsMine.set(1);
 			conn.send(testo);
@@ -72,6 +73,10 @@ message.subscribe((value) => {
 		}
 		console.log('Sent: ', testo);
 	}
+});
+
+messageIsMine.subscribe((value) => {
+	messageIsMineValue = value;
 });
 
 conn.on('open', () => {

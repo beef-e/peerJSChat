@@ -40,6 +40,7 @@ onMount(async () => {
 function handleClick() {
     navigator.clipboard.writeText(peer.id);
     alert("Copied to clipboard!");
+    MyID.set(peer.id);
     fastID = peer.id;
 }
 </script>

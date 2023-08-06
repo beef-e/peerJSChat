@@ -30,7 +30,7 @@
 </script>
 
 <div class="chat-div">
-<div class="effective-chat" use:createNewComponent>
+<div class="effective-chat">
     <!--Component dei messaggi-->
     <!--<MessageComponent></MessageComponent>
     <MessageComponentLeft></MessageComponentLeft>
