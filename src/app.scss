@@ -79,15 +79,21 @@ div.chat-div {
 		height: 100%;
 		border-radius: 8px;
 		border: 1px solid #fff;
+
+		&.effective-chat {
+			overflow-y: clip;
+		}
 	}
 }
 
-.writing-div {
+form.writing-div {
 	/*background-color: aqua;*/
 	/*border-radius: 10px;*/
+	min-width: 100%;
 	margin: 0 auto;
-	margin-bottom: 10px;
+	/*margin-bottom: 10px;*/
 	border-radius: 8px;
+	min-height: 5%;
 	max-height: 5%;
 	display: flex;
 	justify-content: center;
@@ -125,14 +131,15 @@ div#message-div {
 	height: auto;
 	display: flex;
 	justify-content: end;
-	margin-bottom: 2%;
+	margin-bottom: 1.5%;
+	background-color: rgba(0, 0, 0, 0);
 
 	div {
 		display: flex;
 		justify-content: center;
 		margin-right: 5%;
 		min-width: 10%;
-		min-height: 100%;
+		min-height: 110%;
 		width: auto;
 		height: auto;
 		max-width: 50%;
@@ -153,14 +160,15 @@ div#message-div-left {
 	height: auto;
 	display: flex;
 	justify-content: start;
-	margin-bottom: 2%;
+	margin-bottom: 1.5%;
+	background-color: rgba(0, 0, 0, 0);
 
 	div {
 		display: flex;
 		justify-content: center;
 		margin-left: 5%;
 		min-width: 10%;
-		min-height: 100%;
+		min-height: 110%;
 		width: auto;
 		height: auto;
 		max-width: 50%;
