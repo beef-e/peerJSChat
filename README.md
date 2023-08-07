@@ -34,5 +34,5 @@ It definitely needs some superpowers, listed in here:
 
 - Improve the reliability and generally the UX
 - Make the actual chat scrollable, allowing to see older messages
-- Create a confirmation of successful connection
+- ✔️ Create a confirmation of successful connection
 - Make the error alerts less invasive
