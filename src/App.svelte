@@ -8,16 +8,26 @@
   import MessageComponent from './lib/MessageComponent.svelte'
   import MessageComponentLeft from './lib/MessageComponentLeft.svelte'
   import WritingBar from './lib/WritingBar.svelte'
+  import { Modals, closeModal } from 'svelte-modals'
 
   function createNewComponent() {
     const element = new MessageComponent({
       target: document.querySelector('#effective-chat'),
     })
   }
+
 </script>
 
 <main>
   <Header></Header>
+
+  <Modals>
+    <div
+      slot="backdrop"
+      class="backdrop"
+      on:click={closeModal}
+    />
+  </Modals>
 
   <Chat>
 

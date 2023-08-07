@@ -1,5 +1,18 @@
 import { writable } from 'svelte/store';
 import { Peer } from 'peerjs';
+import { openModal, closeModal } from 'svelte-modals';
+import ModalComponent from '../lib/ModalComponent.svelte';
+
+export function handleOpening(TipoConnessione: string, peerID: string) {
+	console.log('clicked');
+	openModal(ModalComponent, {
+		title: `You are connected ${TipoConnessione}`,
+		message: `You are connected to ${peerID}`,
+	});
+	setTimeout(() => {
+		closeModal();
+	}, 3500);
+}
 
 export const message = writable('');
 export const toSend = writable(false);
@@ -24,6 +37,9 @@ peer.on('connection', (connection) => {
 	console.log('conn.open è: ' + conn.open);
 
 	conn.on('open', () => {
+		// handle avviso a schermo della avvenuta connessione
+		handleOpening('Passively', conn.peer);
+
 		console.log('Connected');
 
 		if (conn.open) {
@@ -43,6 +59,9 @@ destID.subscribe((value) => {
 	conn = peer.connect(otherID);
 
 	conn.on('open', () => {
+		// handle avviso a schermo della avvenuta connessione
+		handleOpening('Actively', conn.peer);
+
 		console.log('Connected');
 
 		if (conn.open) {
