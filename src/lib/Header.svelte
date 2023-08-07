@@ -50,7 +50,8 @@ function handleClick() {
 
     <nav>
         <ul>
-            <li><a href="https://github.com/beef-e/peerJSChat">About</a></li>
+            <li class="FirstChild"><a href="https://github.com/beef-e/peerJSChat">About</a></li>
+            
             {#await peer.id||fastID then }
                 {#if peer.id || fastID}
                     <li><span on:click={handleClick}>My ID: {peer.id || fastID}</span></li>
@@ -58,7 +59,8 @@ function handleClick() {
                     <li><span on:click={handleClick}>My ID: Loading...</span></li>
                 {/if}
             {/await}
-            <li><input type="text" name="otherID" id="otherID" placeholder="Insert another ID" bind:value={otherID}><button on:click={connectPeer}>Connect</button></li>
+
+            <li class="lastChild"><input type="text" name="otherID" id="otherID" placeholder="Insert another ID" bind:value={otherID}><button on:click={connectPeer}>Connect</button></li>
         </ul>
     </nav>
 </header>
