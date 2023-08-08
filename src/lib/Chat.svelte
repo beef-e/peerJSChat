@@ -10,8 +10,8 @@
 
     $: if($messageIsMine===1){
             const element = new MessageComponent({
-                target: document.querySelector('.effective-chat'),
-                anchor: document.querySelector('.writing-div'),
+                target: document.querySelector('.target'),
+                anchor: document.querySelector('#message-div'),
                 props: {
                     text: $message
                 }
@@ -19,8 +19,8 @@
             messageIsMine.set(0);
         }else if($messageIsMine===2){
             const element = new MessageComponentLeft({
-                target: document.querySelector('.effective-chat'),
-                anchor: document.querySelector('.writing-div'),
+                target: document.querySelector('.target'),
+                anchor: document.querySelector('#message-div'),
                 props: {
                     text: $message
                 }
@@ -32,7 +32,12 @@
 <div class="chat-div">
     <div class="effective-chat">
 
-        <slot></slot>
+        <div class="invisible">
+            <div class="invisible overflow target">
+                <slot></slot>
+            </div>
+        </div>
+
 
         <WritingBar></WritingBar>
         <!--Component della barra di scrittura-->

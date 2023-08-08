@@ -131,10 +131,23 @@ div.chat-div {
 		height: 100%;
 		border-radius: 8px;
 		border: 1px solid #fff;
+	}
+}
 
-		&.effective-chat {
-			overflow-y: clip;
-		}
+div.invisible {
+	display: block !important;
+	background-color: transparent !important;
+	width: 100% !important;
+	height: 95% !important;
+	border-radius: 0 !important;
+	border: none !important;
+
+	&.overflow {
+		height: 100% !important;
+		display: flex !important;
+		flex-direction: column-reverse !important;
+		justify-content: flex-start !important;
+		overflow-y: auto;
 	}
 }
 
