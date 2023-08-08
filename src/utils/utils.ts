@@ -21,7 +21,7 @@ export const MyID = writable('');
 export const messageIsMine = writable(0); // 0 = non inviato, 1 = inviato, 2 = ricevuto
 
 export var conn;
-export let otherID;
+export let otherID = '';
 export let ID;
 export let testo: string;
 let messageIsMineValue: number;
