@@ -1,15 +1,10 @@
 <script>
-import { peer } from "../..";
 import { message } from "../utils/utils"
-import { toSend } from "../utils/utils"
 let messaggio;
 
 function sendMessage(){
     message.set(messaggio);
     messaggio = "";
-    //console.log($message);
-    //toSend.set(true);
-    //console.log($toSend);
 }
 </script>
 

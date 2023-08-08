@@ -30,18 +30,13 @@
 </script>
 
 <div class="chat-div">
-<div class="effective-chat">
-    <!--Component dei messaggi-->
-    <!--<MessageComponent></MessageComponent>
-    <MessageComponentLeft></MessageComponentLeft>
-    <MessageComponent></MessageComponent>-->
+    <div class="effective-chat">
 
-    <slot></slot>
+        <slot></slot>
 
-    <!--<WritingBar funzione={theFunction}></WritingBar>-->
-    <WritingBar></WritingBar>
-    <!--Component della barra di scrittura-->
-</div>
+        <WritingBar></WritingBar>
+        <!--Component della barra di scrittura-->
+    </div>
 </div>
 
 <style lang="scss">
