@@ -152,6 +152,26 @@ div.invisible {
 		& > :first-child {
 			margin-top: auto !important;
 		}
+
+		&::-webkit-scrollbar {
+			width: 0.5vw;
+		}
+
+		/*create a selector to select the browser's scrollbar's thumb*/
+		&::-webkit-scrollbar-thumb {
+			background-color: #242424;
+			border-radius: 8px;
+		}
+
+		&::-webkit-scrollbar-thumb:hover {
+			background-color: #1d1c1c;
+			border-radius: 8px;
+		}
+
+		/*create a selector to select the browser's scrollbar's track*/
+		&::-webkit-scrollbar-track {
+			border-radius: 8px;
+		}
 	}
 }
 
