@@ -1,5 +1,5 @@
 import { Peer } from 'peerjs';
-import { peer, conn, destID } from './src/utils/utils';
+import { peer, conn, destID, otherID } from './src/utils/utils';
 import { writable } from 'svelte/store';
 import { testo } from './src/utils/utils';
 import { validate } from './src/utils/utils';
@@ -61,7 +61,13 @@ peer.on('open', (id) => {
 });*/
 
 peer.on('error', (err) => {
-	alert(err);
+	// @ts-expect-error
+	if (err.type != 'peer-unavailable') {
+		if (otherID != '') {
+			// @ts-expect-error
+			alert('The following error occurred: ' + err.type + ' - ' + err.message);
+		}
+	}
 });
 
 /*export function connectFunction(destID) {
