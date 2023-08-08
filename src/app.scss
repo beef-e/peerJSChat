@@ -145,9 +145,13 @@ div.invisible {
 	&.overflow {
 		height: 100% !important;
 		display: flex !important;
-		flex-direction: column-reverse !important;
-		justify-content: flex-start !important;
+		/*flex-direction: column-reverse !important;
+		justify-content: flex-start !important;*/
 		overflow-y: auto;
+
+		& > :first-child {
+			margin-top: auto !important;
+		}
 	}
 }
 

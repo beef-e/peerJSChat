@@ -11,7 +11,10 @@
     $: if($messageIsMine===1){
             const element = new MessageComponent({
                 target: document.querySelector('.target'),
-                anchor: document.querySelector('#message-div'),
+                //anchor: document.querySelector('.writing-div'),
+                //anchor: document.querySelector('.fakey'),
+                //anchor: document.querySelector('#message-div'),
+                //anchor: document.querySelector('#message-div-left'),
                 props: {
                     text: $message
                 }
@@ -20,7 +23,10 @@
         }else if($messageIsMine===2){
             const element = new MessageComponentLeft({
                 target: document.querySelector('.target'),
-                anchor: document.querySelector('#message-div'),
+                //anchor: document.querySelector('.writing-div'),
+                //anchor: document.querySelector('.fakey'),
+                //anchor: document.querySelector('#message-div' && '#message-div-left'),
+                //anchor: document.querySelector('#message-div-left'),
                 props: {
                     text: $message
                 }
@@ -37,8 +43,8 @@
                 <slot></slot>
             </div>
         </div>
-
-
+        
+        
         <WritingBar></WritingBar>
         <!--Component della barra di scrittura-->
     </div>
@@ -49,7 +55,7 @@
     div{
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        //justify-content: flex-end;
     }
 }
 </style>
