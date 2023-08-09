@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
 // @ts-nocheck
+    import { afterUpdate } from "svelte";
 
     import WritingBar from "./WritingBar.svelte";
     import MessageComponent from "./MessageComponent.svelte";
@@ -7,6 +8,8 @@
 
     import {messageIsMine} from "../utils/utils";
     import {message} from "../utils/utils";
+
+    let element: HTMLElement;
 
     $: if($messageIsMine===1){
             const element = new MessageComponent({
@@ -33,13 +36,21 @@
             })
             messageIsMine.set(0);
         }
+
+        const scrollToBottom = async (node) => {
+            node.scroll({ top: node.scrollHeight, behavior: 'smooth' });
+        }; 
+
+        afterUpdate(() => {
+            scrollToBottom(element);
+        });
 </script>
 
 <div class="chat-div">
     <div class="effective-chat">
 
         <div class="invisible">
-            <div class="invisible overflow target">
+            <div class="invisible overflow target" bind:this={element}>
                 <slot></slot>
             </div>
         </div>
