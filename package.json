@@ -21,6 +21,8 @@
 		"vite": "^4.4.5"
 	},
 	"dependencies": {
+		"@dicebear/collection": "^6.0.4",
+		"@dicebear/core": "^6.0.4",
 		"gh-pages": "^5.0.0",
 		"peerjs": "^1.4.7",
 		"sass": "^1.64.1",

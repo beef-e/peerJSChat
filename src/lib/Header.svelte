@@ -4,7 +4,6 @@ import {peer} from "../..";
 import { destID, MyID } from "../utils/utils";
 let otherID;
 let fastID;
-
 function connectPeer(){
     destID.set(otherID);
     console.log("Connected to " + $destID);

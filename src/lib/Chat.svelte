@@ -1,13 +1,15 @@
 <script lang="ts">
 // @ts-nocheck
-    import { afterUpdate } from "svelte";
+    import { afterUpdate, onMount } from "svelte";
 
     import WritingBar from "./WritingBar.svelte";
     import MessageComponent from "./MessageComponent.svelte";
     import MessageComponentLeft from "./MessageComponentLeft.svelte";
 
     import {messageIsMine} from "../utils/utils";
-    import {message} from "../utils/utils";
+    import {message, casualAvatar} from "../utils/utils";
+
+    let avatarSvg;
 
     let element: HTMLElement;
 
@@ -44,10 +46,16 @@
         afterUpdate(() => {
             scrollToBottom(element);
         });
+
+        onMount(async () => {
+            let avatar = casualAvatar();
+            avatarSvg=avatar.toString();
+        });
 </script>
 
 <div class="chat-div">
     <div class="effective-chat">
+        <span>{@html avatarSvg}</span>
 
         <div class="invisible">
             <div class="invisible overflow target" bind:this={element}>
@@ -68,5 +76,10 @@
         flex-direction: column;
         //justify-content: flex-end;
     }
+}
+
+span{
+    width: 100%;
+    text-align: center;
 }
 </style>
