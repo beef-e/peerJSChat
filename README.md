@@ -18,6 +18,7 @@ A small real time chat app built using Svelte and PeerJS
 - [Vite](https://github.com/vitejs/vite), to manage the project structure
 - [PeerJS](https://peerjs.com), to manage the connection between the users
 - TypeScript, to easily and quickly write safer code
+- [DiceBear](https://www.dicebear.com/), to add cool Avatar icons to the chat
 
 ## How to use
 
