@@ -138,13 +138,16 @@ div.invisible {
 	display: block !important;
 	background-color: transparent !important;
 	width: 100% !important;
-	height: 95% !important;
+	height: calc(95% - 6.66vh) !important;
+	margin-top: 6.66vh !important;
 	border-radius: 0 !important;
 	border: none !important;
 
 	&.overflow {
 		height: 100% !important;
 		display: flex !important;
+		margin-top: 0 !important;
+		padding-top: 3.5px;
 		/*flex-direction: column-reverse !important;
 		justify-content: flex-start !important;*/
 		overflow-y: auto;

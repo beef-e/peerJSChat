@@ -78,8 +78,22 @@
     }
 }
 
-span{
-    width: 100%;
-    text-align: center;
+
+.effective-chat{
+    span{
+        min-height: 1px;
+        position: absolute;
+        max-width: 90%;
+        width: calc(90% - 2px);
+        background-color: inherit;
+        text-align: center;
+        border-radius: 8px;
+    }
+}
+
+span :global(svg){
+    --misura: 6.66vh;
+    width: var(--misura);
+    height: var(--misura);
 }
 </style>
