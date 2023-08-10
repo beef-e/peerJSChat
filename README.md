@@ -11,7 +11,7 @@ A small real time chat app built using Svelte and PeerJS
 ### Frontend
 
 - [Svelte](https://github.com/sveltejs/svelte), to create and manage the UI
-- Scss, to easily create good-looking CSS
+- Scss, to easily create hand-made and good-looking CSS
 
 ### Backend, tools, libraries
 
@@ -34,6 +34,11 @@ It definitely needs some superpowers, listed in here:
 ### To-Do:
 
 - Improve the reliability and generally the UX
-- Make the actual chat scrollable, allowing to see older messages
+- ✔️ Make the actual chat scrollable, allowing to see older messages
 - ✔️ Create a confirmation of successful connection
-- Make the error alerts less invasive
+- ✔️ Make the error alerts less invasive
+- Use the second Peer's avatar in the UI
+- Possibility to create personal ID's
+- Store older messages
+- Possibility to send basic media
+- VideoCall option
