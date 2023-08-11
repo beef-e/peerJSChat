@@ -7,9 +7,7 @@
     import MessageComponentLeft from "./MessageComponentLeft.svelte";
 
     import {messageIsMine} from "../utils/utils";
-    import {message, casualAvatar} from "../utils/utils";
-
-    let avatarSvg;
+    import {message, avatarSvg, otherAvatar} from "../utils/utils";
 
     let element: HTMLElement;
 
@@ -48,14 +46,28 @@
         });
 
         onMount(async () => {
-            let avatar = casualAvatar();
-            avatarSvg=avatar.toString();
+            //let avatar = casualAvatar();
+            //avatarSvg=avatar.toString();
         });
+
+        let displayAvatar = false;
+
+        $: if($otherAvatar != ''){
+            displayAvatar = true
+        }
 </script>
 
 <div class="chat-div">
     <div class="effective-chat">
-        <span>{@html avatarSvg}</span>
+
+        {#if displayAvatar}
+            <span>{@html avatarSvg}{@html $otherAvatar}</span>
+        {:else}
+            <span>{@html avatarSvg}</span>
+        {/if}
+
+
+        <!--<span>{@html avatarSvg}</span>-->
 
         <div class="invisible">
             <div class="invisible overflow target" bind:this={element}>

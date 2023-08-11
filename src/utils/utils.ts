@@ -16,11 +16,7 @@ export function handleOpening(TipoConnessione: string, peerID: string) {
 	}, 3500);
 }
 
-export function casualBooleanValue() {
-	return Math.random() < 0.5;
-}
-
-export function casualAccessories() {
+function casualAccessories() {
 	const accessories = [
 		'catEars',
 		'clownNose',
@@ -35,14 +31,14 @@ export function casualAccessories() {
 	return accessorio;
 }
 
-export function casualAvatarEyes() {
+function casualAvatarEyes() {
 	const eyes = ['angry', 'cheery', 'confused', 'normal', 'sad', 'sleepy', 'starstruck', 'winking'];
 	const randomIndex = Math.floor(Math.random() * eyes.length);
 	const eye = eyes[randomIndex];
 	return eye;
 }
 
-export function casualAvatarHair() {
+function casualAvatarHair() {
 	const hair = [
 		'bangs',
 		'bowlCutHair',
@@ -64,14 +60,14 @@ export function casualAvatarHair() {
 	return [capelli, hairColor];
 }
 
-export function casualAvatarSkinColor() {
+function casualAvatarSkinColor() {
 	const skinColors = ['8c5a2b', 'a47539', 'e2ba87'];
 	const randomIndex = Math.floor(Math.random() * skinColors.length);
 	const skinColor = skinColors[randomIndex];
 	return skinColor;
 }
 
-export function casualAvatar(
+function casualAvatar(
 	seed = 'Felix',
 	avatarSize: number = 32,
 	accessorio = casualAccessories(),
@@ -98,6 +94,10 @@ export function casualAvatar(
 	return avatar;
 }
 
+const avatar = casualAvatar();
+export const avatarSvg = avatar.toString();
+
+export const otherAvatar = writable('');
 export const message = writable('');
 export const toSend = writable(false);
 export const destID = writable('');
@@ -108,6 +108,7 @@ export var conn;
 export let otherID = '';
 export let ID;
 export let testo: string;
+// export let otherAvatar = null;
 let messageIsMineValue: number;
 
 export const peer = new Peer();
@@ -121,17 +122,25 @@ peer.on('connection', (connection) => {
 	conn.on('open', () => {
 		// handle avviso a schermo della avvenuta connessione
 		handleOpening('Passively', conn.peer);
+		let primoMess = true;
 
 		console.log('Connected');
 
 		if (conn.open) {
 			console.log('conn.open è true');
+			conn.send(avatarSvg);
 		}
 
 		conn.on('data', (data) => {
 			console.log('Received dal connected passively: ', data);
-			messageIsMine.set(2);
-			message.set(data);
+			// handling della ricezione dell'avatar
+			if (primoMess) {
+				primoMess = false;
+				otherAvatar.set(data);
+			} else {
+				messageIsMine.set(2);
+				message.set(data);
+			}
 		});
 	});
 });
@@ -143,17 +152,25 @@ destID.subscribe((value) => {
 	conn.on('open', () => {
 		// handle avviso a schermo della avvenuta connessione
 		handleOpening('Actively', conn.peer);
+		let primoMess = true;
 
 		console.log('Connected');
 
 		if (conn.open) {
 			console.log('conn.open è true');
+			conn.send(avatarSvg);
 		}
 
 		conn.on('data', (data) => {
 			console.log('Received dal destID.subscribe: ', data);
-			messageIsMine.set(2);
-			message.set(data);
+			// handling della ricezione dell'avatar
+			if (primoMess) {
+				primoMess = false;
+				otherAvatar.set(data);
+			} else {
+				messageIsMine.set(2);
+				message.set(data);
+			}
 		});
 	});
 });
