@@ -1,23 +1,18 @@
 <script lang="ts">
 // @ts-nocheck
-    import { afterUpdate, onMount } from "svelte";
+    import { afterUpdate} from "svelte";
 
     import WritingBar from "./WritingBar.svelte";
     import MessageComponent from "./MessageComponent.svelte";
     import MessageComponentLeft from "./MessageComponentLeft.svelte";
 
-    import {messageIsMine} from "../utils/utils";
-    import {message, avatarSvg, otherAvatar} from "../utils/utils";
+    import {message, avatarSvg, otherAvatar, messageIsMine} from "../utils/utils";
 
     let element: HTMLElement;
 
     $: if($messageIsMine===1){
             const element = new MessageComponent({
                 target: document.querySelector('.target'),
-                //anchor: document.querySelector('.writing-div'),
-                //anchor: document.querySelector('.fakey'),
-                //anchor: document.querySelector('#message-div'),
-                //anchor: document.querySelector('#message-div-left'),
                 props: {
                     text: $message
                 }
@@ -26,10 +21,6 @@
         }else if($messageIsMine===2){
             const element = new MessageComponentLeft({
                 target: document.querySelector('.target'),
-                //anchor: document.querySelector('.writing-div'),
-                //anchor: document.querySelector('.fakey'),
-                //anchor: document.querySelector('#message-div' && '#message-div-left'),
-                //anchor: document.querySelector('#message-div-left'),
                 props: {
                     text: $message
                 }
@@ -43,11 +34,6 @@
 
         afterUpdate(() => {
             scrollToBottom(element);
-        });
-
-        onMount(async () => {
-            //let avatar = casualAvatar();
-            //avatarSvg=avatar.toString();
         });
 
         let displayAvatar = false;
@@ -66,9 +52,6 @@
             <span>{@html avatarSvg}</span>
         {/if}
 
-
-        <!--<span>{@html avatarSvg}</span>-->
-
         <div class="invisible">
             <div class="invisible overflow target" bind:this={element}>
                 <slot></slot>
@@ -86,7 +69,6 @@
     div{
         display: flex;
         flex-direction: column;
-        //justify-content: flex-end;
     }
 }
 

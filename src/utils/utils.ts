@@ -108,7 +108,6 @@ export var conn;
 export let otherID = '';
 export let ID;
 export let testo: string;
-// export let otherAvatar = null;
 let messageIsMineValue: number;
 
 export const peer = new Peer();
@@ -182,7 +181,7 @@ MyID.subscribe((value) => {
 message.subscribe((value) => {
 	testo = value;
 
-	if (testo.length > 0 && conn != null && messageIsMineValue != 2) {
+	if (testo.length > 0 && conn != null && messageIsMineValue != 2 && validate(testo)) {
 		try {
 			messageIsMine.set(1);
 			conn.send(testo);
