@@ -37,7 +37,7 @@ function handleClick() {
                 {/if}
             {/await}
 
-            <li class="lastChild"><input type="text" name="otherID" id="otherID" placeholder="Insert another ID" bind:value={otherID}><button on:click={connectPeer}>Connect</button></li>
+            <li class="lastChild"><form on:submit|preventDefault={connectPeer}><input type="text" name="otherID" id="otherID" placeholder="Insert another ID" bind:value={otherID}><button type="submit">Connect</button></form></li>
         </ul>
     </nav>
 </header>
