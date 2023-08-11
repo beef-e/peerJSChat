@@ -37,7 +37,7 @@ It definitely needs some superpowers, listed in here:
 - ✔️ Make the actual chat scrollable, allowing to see older messages
 - ✔️ Create a confirmation of successful connection
 - ✔️ Make the error alerts less invasive
-- Use the second Peer's avatar in the UI
+- ✔️ Use the second Peer's avatar in the UI
 - Possibility to create personal ID's
 - Store older messages
 - Possibility to send basic media
