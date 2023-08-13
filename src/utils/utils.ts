@@ -109,8 +109,20 @@ export let otherID = '';
 export let ID;
 export let testo: string;
 let messageIsMineValue: number;
+/*export let personalID: string;*/
 
-export const peer = new Peer();
+export let peer = new Peer();
+
+export function rePeer(id) {
+	console.log('I am inside rePeer');
+	peer.destroy();
+	peer = new Peer(id);
+	console.log('peer.id is: ' + peer.id);
+}
+
+/*if (personalID === '') {
+	peer = new Peer();
+}*/
 
 peer.on('connection', (connection) => {
 	console.log('I am in peer.on(connection)');
