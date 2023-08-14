@@ -100,7 +100,6 @@ header {
 					margin: 0 0.83vw;
 					height: 3.33vh;
 					font-size: 1.527vh;
-					/*font-size: 1.66vh;*/
 				}
 
 				button {
@@ -112,7 +111,6 @@ header {
 					margin: 0 0.83vw;
 					height: 3.33vh;
 					font-size: 1.527vh;
-					/*font-size: 1.66vh;*/
 				}
 			}
 		}
@@ -148,8 +146,6 @@ div.invisible {
 		display: flex !important;
 		margin-top: 0 !important;
 		padding-top: 3.5px;
-		/*flex-direction: column-reverse !important;
-		justify-content: flex-start !important;*/
 		overflow-y: auto;
 
 		& > :first-child {
@@ -179,11 +175,8 @@ div.invisible {
 }
 
 form.writing-div {
-	/*background-color: aqua;*/
-	/*border-radius: 10px;*/
 	min-width: 100%;
 	margin: 0 auto;
-	/*margin-bottom: 10px;*/
 	border-radius: 8px;
 	min-height: 5%;
 	max-height: 5%;
