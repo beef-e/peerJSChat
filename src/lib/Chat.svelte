@@ -46,9 +46,9 @@
 <div class="chat-div">
 	<div class="effective-chat">
 		{#if displayAvatar}
-			<span>{@html $otherAvatar}{@html avatarSvg}</span>
+			<span class="avatarClass">{@html $otherAvatar}{@html avatarSvg}</span>
 		{:else}
-			<span>{@html avatarSvg}</span>
+			<span class="avatarClass">{@html avatarSvg}</span>
 		{/if}
 
 		<div class="invisible">
@@ -74,13 +74,16 @@
 	}
 
 	.effective-chat {
-		span {
+		span.avatarClass {
 			min-height: 1px;
 			position: absolute;
 			max-width: 90%;
 			width: calc(90% - 2px);
 			background-color: inherit;
-			text-align: center;
+			/*text-align: center;*/
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
 			border-radius: 8px;
 		}
 	}
