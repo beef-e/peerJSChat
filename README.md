@@ -38,7 +38,7 @@ It definitely needs some superpowers, listed in here:
 - ✔️ Create a confirmation of successful connection
 - ✔️ Make the error alerts less invasive
 - ✔️ Use the second Peer's avatar in the UI
-- Possibility to create personal ID's
+- ✔️ Possibility to create personal ID's
 - Store older messages
 - Possibility to send basic media
 - VideoCall option
