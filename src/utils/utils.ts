@@ -118,43 +118,39 @@ export function rePeer(id) {
 	peer.destroy();
 	peer = new Peer(id);
 	console.log('peer.id is: ' + peer.id);
-}
 
-/*if (personalID === '') {
-	peer = new Peer();
-}*/
+	peer.on('connection', (connection) => {
+		console.log('I am in peer.on(connection)');
+		conn = connection;
+		console.log('Connected passively to: ' + conn.peer);
+		console.log('conn.open è: ' + conn.open);
 
-peer.on('connection', (connection) => {
-	console.log('I am in peer.on(connection)');
-	conn = connection;
-	console.log('Connected passively to: ' + conn.peer);
-	console.log('conn.open è: ' + conn.open);
+		conn.on('open', () => {
+			// handle avviso a schermo della avvenuta connessione
+			handleOpening('Passively', conn.peer);
+			let primoMess = true;
 
-	conn.on('open', () => {
-		// handle avviso a schermo della avvenuta connessione
-		handleOpening('Passively', conn.peer);
-		let primoMess = true;
+			console.log('Connected');
 
-		console.log('Connected');
-
-		if (conn.open) {
-			console.log('conn.open è true');
-			conn.send(avatarSvg);
-		}
-
-		conn.on('data', (data) => {
-			console.log('Received dal connected passively: ', data);
-			// handling della ricezione dell'avatar
-			if (primoMess) {
-				primoMess = false;
-				otherAvatar.set(data);
-			} else {
-				messageIsMine.set(2);
-				message.set(data);
+			if (conn.open) {
+				console.log('conn.open è true');
+				conn.send(avatarSvg);
 			}
+
+			conn.on('data', (data) => {
+				console.log('Received dal connected passively: ', data);
+				// handling della ricezione dell'avatar
+				if (primoMess) {
+					primoMess = false;
+					otherAvatar.set(data);
+				} else {
+					messageIsMine.set(2);
+					message.set(data);
+				}
+			});
 		});
 	});
-});
+}
 
 destID.subscribe((value) => {
 	otherID = value;
