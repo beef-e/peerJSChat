@@ -132,6 +132,13 @@ div.chat-div {
 	}
 }
 
+@media screen and (max-width: 425px) {
+	div.chat-div {
+		margin-top: 4vh;
+		height: calc(100vh - 5.723vh - 4vh - 12.83vh) !important;
+	}
+}
+
 div.invisible {
 	display: block !important;
 	background-color: transparent !important;
