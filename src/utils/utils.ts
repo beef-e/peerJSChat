@@ -123,6 +123,7 @@ export function rePeer(id) {
 		console.log('I am in peer.on(connection)');
 		conn = connection;
 		console.log('Connected passively to: ' + conn.peer);
+		otherID = conn.peer;
 		console.log('conn.open è: ' + conn.open);
 
 		conn.on('open', () => {

@@ -6,7 +6,7 @@
 	import MessageComponent from './MessageComponent.svelte';
 	import MessageComponentLeft from './MessageComponentLeft.svelte';
 
-	import { message, avatarSvg, otherAvatar, messageIsMine } from '../utils/utils';
+	import { message, avatarSvg, otherAvatar, messageIsMine, otherID } from '../utils/utils';
 
 	let element: HTMLElement;
 
@@ -46,7 +46,7 @@
 <div class="chat-div">
 	<div class="effective-chat">
 		{#if displayAvatar}
-			<span class="avatarClass">{@html $otherAvatar}{@html avatarSvg}</span>
+			<span class="avatarClass">{@html $otherAvatar} Connected to {otherID} {@html avatarSvg}</span>
 		{:else}
 			<span class="avatarClass">{@html avatarSvg}</span>
 		{/if}
@@ -85,6 +85,7 @@
 			align-items: center;
 			justify-content: space-around;
 			border-radius: 8px;
+			font-size: 1.66vh;
 		}
 	}
 
