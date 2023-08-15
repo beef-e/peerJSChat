@@ -114,32 +114,26 @@ let messageIsMineValue: number;
 export let peer = new Peer();
 
 export function rePeer(id) {
-	console.log('I am inside rePeer');
 	peer.destroy();
 	peer = new Peer(id);
 	console.log('peer.id is: ' + peer.id);
 
 	peer.on('connection', (connection) => {
-		console.log('I am in peer.on(connection)');
 		conn = connection;
 		console.log('Connected passively to: ' + conn.peer);
 		otherID = conn.peer;
-		console.log('conn.open è: ' + conn.open);
 
 		conn.on('open', () => {
 			// handle avviso a schermo della avvenuta connessione
 			handleOpening('Passively', conn.peer);
+
 			let primoMess = true;
 
-			console.log('Connected');
-
 			if (conn.open) {
-				console.log('conn.open è true');
 				conn.send(avatarSvg);
 			}
 
 			conn.on('data', (data) => {
-				console.log('Received dal connected passively: ', data);
 				// handling della ricezione dell'avatar
 				if (primoMess) {
 					primoMess = false;
@@ -162,15 +156,11 @@ destID.subscribe((value) => {
 		handleOpening('Actively', conn.peer);
 		let primoMess = true;
 
-		console.log('Connected');
-
 		if (conn.open) {
-			console.log('conn.open è true');
 			conn.send(avatarSvg);
 		}
 
 		conn.on('data', (data) => {
-			console.log('Received dal destID.subscribe: ', data);
 			// handling della ricezione dell'avatar
 			if (primoMess) {
 				primoMess = false;
@@ -197,24 +187,11 @@ message.subscribe((value) => {
 		} catch (error) {
 			console.log('Errore: ' + error);
 		}
-		console.log('Sent: ', testo);
 	}
 });
 
 messageIsMine.subscribe((value) => {
 	messageIsMineValue = value;
-});
-
-conn.on('open', () => {
-	console.log('Connected');
-
-	if (conn.open) {
-		console.log('conn.open è true');
-	}
-
-	conn.on('data', (data) => {
-		console.log('Received: ', data);
-	});
 });
 
 // funzione per eliminare gli spazi e identificare i messaggi vuoti
