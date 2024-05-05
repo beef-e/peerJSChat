@@ -177,19 +177,6 @@ MyID.subscribe((value) => {
 	ID = value;
 });
 
-message.subscribe((value) => {
-	testo = value;
-
-	if (testo.length > 0 && conn != null && messageIsMineValue != 2 && validate(testo)) {
-		try {
-			messageIsMine.set(1);
-			conn.send(testo);
-		} catch (error) {
-			console.log('Errore: ' + error);
-		}
-	}
-});
-
 messageIsMine.subscribe((value) => {
 	messageIsMineValue = value;
 });
@@ -202,5 +189,16 @@ export function validate(text: string) {
 		return false;
 	} else {
 		return true;
+	}
+}
+
+export function actualSend(message: string) {
+	if (message.length > 0 && conn != null && messageIsMineValue != 2 && validate(message)) {
+		try {
+			messageIsMine.set(1);
+			conn.send(message);
+		} catch (error) {
+			console.log('Errore: ' + error);
+		}
 	}
 }

@@ -1,21 +1,29 @@
 <script>
-import { message } from "../utils/utils"
-let messaggio;
+	import { message } from '../utils/utils';
+	import { actualSend } from '../utils/utils';
+	let messaggio;
 
-function sendMessage(){
-    message.set(messaggio);
-    messaggio = "";
-}
+	function sendMessage() {
+		message.set(messaggio);
+		actualSend(messaggio);
+		messaggio = '';
+	}
 </script>
 
-
-<form class="writing-div" on:submit|preventDefault={sendMessage}>
-    <input type="text" placeholder="Scrivi un messaggio" bind:value={messaggio}/>
-    <button type="submit">Invia</button>
+<form
+	class="writing-div"
+	on:submit|preventDefault={sendMessage}
+>
+	<input
+		type="text"
+		placeholder="Scrivi un messaggio"
+		bind:value={messaggio}
+	/>
+	<button type="submit">Invia</button>
 </form>
 
 <style>
-    input{
-        padding-left: 1.5%;
-    }
+	input {
+		padding-left: 1.5%;
+	}
 </style>
